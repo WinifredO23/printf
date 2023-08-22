@@ -100,6 +100,7 @@ int print_reverse(va_list specifiers, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	char *str;
+	char z;
 	int i, count = 0;
 
 	UNUSED(buffer);
@@ -122,7 +123,7 @@ int print_reverse(va_list specifiers, char buffer[],
 	i--;
 	while (i >= 0)
 	{
-		char z = str[i];
+		z = str[i];
 		write(1, &z, 1);
 		count++;
 		i--;
@@ -158,7 +159,6 @@ int print_rot13string(va_list specifiers, char buffer[],
 
 	if (str == NULL)
 		str = "(AHYY)";
-
 	i = 0;
 	while (str[i])
 	{

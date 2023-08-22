@@ -22,6 +22,6 @@ int get_format_size(const char *format, int *i)
 	else
 		*i = current_index;
 
-	return size;
+	return (size);
 }
 

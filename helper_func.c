@@ -12,7 +12,8 @@
  *
  * Return: Number of chars printed.
  */
-int handle_char(char c, char buffer[], int flags, int width, int precision, int size)
+int handle_char(char c, char buffer[], int flags,
+		int width, int precision, int size)
 {
 	int i = 0;
 	char padd = ' ';
@@ -33,14 +34,15 @@ int handle_char(char c, char buffer[], int flags, int width, int precision, int 
 			buffer[BUFF_SIZE - i - 2] = padd;
 
 		if (flags & F_MINUS)
-			return (write(1, &buffer[0], 1) + write(1, &buffer[BUFF_SIZE - i - 1], width - 1));
+			return (write(1, &buffer[0], 1) +
+					write(1, &buffer[BUFF_SIZE - i - 1], width - 1));
 		else
-			return (write(1, &buffer[BUFF_SIZE - i - 1], width - 1) + write(1, &buffer[0], 1));
+			return (write(1, &buffer[BUFF_SIZE - i - 1],
+					width - 1) + write(1, &buffer[0], 1));
 	}
 
 	return (write(1, &buffer[0], 1));
 }
-/************************* WRITE NUMBER *************************/
 /**
  * handle_num - Prints a number
  * @is_negative: Indicates if the number is negative.
@@ -53,7 +55,8 @@ int handle_char(char c, char buffer[], int flags, int width, int precision, int 
  *
  * Return: Number of chars printed.
  */
-int handle_num(int is_negative, int ind, char buffer[], int flags, int width, int precision, int size)
+int handle_num(int is_negative, int ind, char buffer[],
+		int flags, int width, int precision, int size)
 {
 	int length = BUFF_SIZE - ind - 1;
 	char padd = ' ', extra_ch = 0;
@@ -69,11 +72,12 @@ int handle_num(int is_negative, int ind, char buffer[], int flags, int width, in
 	else if (flags & F_SPACE)
 		extra_ch = ' ';
 
-	return (handle_number(ind, buffer, flags, width, precision, length, padd, extra_ch));
+	return (handle_number(ind, buffer, flags, width,
+				precision, length, padd, extra_ch));
 }
 
 /**
- * handle_number - Write a number using a buffer
+ * handle_number - Write a number using a buffer.
  * @ind: Index at which the number starts on the buffer.
  * @buffer: Buffer.
  * @flags: Flags.
@@ -85,7 +89,8 @@ int handle_num(int is_negative, int ind, char buffer[], int flags, int width, in
  *
  * Return: Number of printed chars.
  */
-int handle_number(int ind, char buffer[], int flags, int width, int prec, int length, char padd, char extra_c)
+int handle_number(int ind, char buffer[], int flags,
+		int width, int prec, int length, char padd, char extra_c)
 {
 	int i, padd_start = 1;
 
@@ -140,7 +145,8 @@ int handle_number(int ind, char buffer[], int flags, int width, int prec, int le
  *
  * Return: Number of written chars.
  */
-int handle_unsigned(int is_negative, int ind, char buffer[], int flags, int width, int precision, int size)
+int handle_unsigned(int is_negative, int ind, char buffer[],
+		int flags, int width, int precision, int size)
 {
 	int length = BUFF_SIZE - ind - 1, i = 0;
 	char padd = '\t';
@@ -174,7 +180,7 @@ int handle_unsigned(int is_negative, int ind, char buffer[], int flags, int widt
 		{
 			return (write(1, &buffer[ind], length) + write(1, &buffer[0], i));
 		}
-		else 
+		else
 		{
 			return (write(1, &buffer[0], i) + write(1, &buffer[ind], length));
 		}
@@ -195,7 +201,8 @@ int handle_unsigned(int is_negative, int ind, char buffer[], int flags, int widt
  *
  * Return: Number of written chars.
  */
-int handle_pointer(char buffer[], int ind, int length, int width, int flags, char padd, char extra_c, int padd_start)
+int handle_pointer(char buffer[], int ind, int length, int width,
+		int flags, char padd, char extra_c, int padd_start)
 {
 	int i;
 

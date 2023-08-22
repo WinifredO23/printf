@@ -34,6 +34,6 @@ int get_format_width(const char *format, int *i, va_list list)
 
 	*i = current_index - 1;
 
-	return width;
+	return (width);
 }
 

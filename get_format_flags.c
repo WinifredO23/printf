@@ -35,5 +35,5 @@ int get_format_flags(const char *format, int *i)
 
 	*i = current_index - 1;
 
-	return flags;
+	return (flags);
 }

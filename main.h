@@ -20,21 +20,32 @@
 #define S_SHORT 1
 #define S_LONG 2
 
+/**
+ * struct fmt - Structures operartion
+ * @fmt: The format
+ * @fn: The functions
+ */
 typedef struct fmt
 {
 	char fmt;
 	int (*fn)(va_list, char[], int, int, int, int);
-}fmt_t;
+} fmt_t;
 
 /* Function prototypes */
 int _printf(const char *format, ...);
-int print_handler(const char *fmt, int *ind, va_list list, char buffer[], int flags, int width, int precision, int size);
+int print_handler(const char *fmt, int *ind, va_list list,
+		char buffer[], int flags, int width, int precision, int size);
 /* Handle functions */
-int handle_char(char c, char buffer[], int flags, int width, int precision, int size);
-int handle_num(int is_negative, int ind, char buffer[], int flags, int width, int precision, int size);
-int handle_number(int ind, char buffer[], int flags, int width, int prec, int length, char padd, char extra_c);
-int handle_unsigned(int is_negative, int ind, char buffer[], int flags, int width, int precision, int size);
-int handle_pointer(char buffer[], int ind, int length, int width, int flags, char padd, char extra_c, int padd_start);
+int handle_char(char c, char buffer[], int flags,
+		int width, int precision, int size);
+int handle_num(int is_negative, int ind, char buffer[],
+		int flags, int width, int precision, int size);
+int handle_number(int ind, char buffer[], int flags,
+		int width, int prec, int length, char padd, char extra_c);
+int handle_unsigned(int is_negative, int ind, char buffer[],
+		int flags, int width, int precision, int size);
+int handle_pointer(char buffer[], int ind, int length,
+		int width, int flags, char padd, char extra_c, int padd_start);
 
 int print_char(va_list specifiers, char buffer[],
 	int flags, int width, int precision, int size);
@@ -71,7 +82,6 @@ int print_rot13string(va_list specifiers, char buffer[],
 
 int print_pointer(va_list specifiers, char buffer[],
 	int flags, int width, int precision, int size);
-
 int get_format_flags(const char *format, int *i);
 int get_format_width(const char *format, int *i, va_list list);
 int get_format_precision(const char *format, int *i, va_list list);
@@ -85,5 +95,5 @@ long int convert_size_number(long int num, int size);
 long int convert_size_unsgnd(unsigned long int num, int size);
 void print_buffer(char buffer[], int *buff_ind);
 
-#endif 
+#endif
 
