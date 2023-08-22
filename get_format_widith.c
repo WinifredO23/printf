@@ -10,10 +10,10 @@
  */
 int get_format_width(const char *format, int *i, va_list list)
 {
-	int current_index = *i + 1;
+	int current_index;
 	int width = 0;
 
-	while (format[current_index] != '\0')
+	for (current_index = *i + 1; format[current_index] != '\0'; current_index++)
 	{
 		if (is_digit(format[current_index]))
 		{
@@ -28,8 +28,6 @@ int get_format_width(const char *format, int *i, va_list list)
 		}
 		else
 			break;
-
-		current_index++;
 	}
 
 	*i = current_index - 1;

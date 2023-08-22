@@ -134,7 +134,7 @@ int handle_number(int ind, char buffer[], int flags,
 	return (write(1, &buffer[ind], length));
 }
 /**
- * handle_unsigned - Writes an unsigned number
+ * handle_unsignd - Writes an unsigned number
  * @is_negative: Indicates if the num is negative.
  * @ind: Index where the number starts in the buffer.
  * @buffer: Array of chars.
@@ -145,7 +145,7 @@ int handle_number(int ind, char buffer[], int flags,
  *
  * Return: Number of written chars.
  */
-int handle_unsigned(int is_negative, int ind, char buffer[],
+int handle_unsignd(int is_negative, int ind, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	int length = BUFF_SIZE - ind - 1, i = 0;

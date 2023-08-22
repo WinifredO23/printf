@@ -30,7 +30,7 @@ int print_unsigned(va_list specifiers, char buffer[],
 
 	i++;
 
-	return (handle_unsigned(0, i, buffer, flags, width, precision, size));
+	return (handle_unsignd(0, i, buffer, flags, width, precision, size));
 }
 /**
  * print_octal - Prints an unsigned number in octal notation
@@ -68,7 +68,7 @@ int print_octal(va_list specifiers, char buffer[],
 	if (flags & F_HASH && init_num != 0)
 		buffer[i--] = '0';
 	i++;
-	return (handle_unsigned(0, i, buffer, flags, width, precision, size));
+	return (handle_unsignd(0, i, buffer, flags, width, precision, size));
 }
 /**
  * print_hexadecimal - Prints an unsigned number in hexadecimal notation
@@ -143,5 +143,5 @@ int print_hexa(va_list specifiers, char map_to[], char buffer[],
 	}
 
 	i++;
-	return (handle_unsigned(0, i, buffer, flags, width, precision, size));
+	return (handle_unsignd(0, i, buffer, flags, width, precision, size));
 }
