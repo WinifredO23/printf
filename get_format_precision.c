@@ -18,8 +18,7 @@ int get_format_precision(const char *format, int *i, va_list list)
 
 	precision = 0;
 
-	current_index += 1;
-	while (format[current_index] != '\0')
+	for (current_index +=1; format[current_index] != '\0'; current_index++)
 	{
 		if (is_digit(format[current_index]))
 		{
@@ -34,8 +33,6 @@ int get_format_precision(const char *format, int *i, va_list list)
 		}
 		else
 			break;
-
-		current_index++;
 	}
 
 	*i = current_index - 1;
